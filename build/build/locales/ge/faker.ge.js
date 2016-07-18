@@ -247,10 +247,8 @@ var Commerce = function (faker) {
    * department
    *
    * @method faker.commerce.department
-   * @param {number} max
-   * @param {number} fixedAmount
    */
-  self.department = function(max, fixedAmount) {
+  self.department = function() {
       return faker.random.arrayElement(faker.definitions.commerce.department);
   };
 
@@ -806,9 +804,9 @@ var Finance = function (faker) {
       max = max || 1000;
       dec = dec || 2;
       symbol = symbol || '';
-      var randValue = faker.random.number({ max: max, min: min });
+      var randValue = faker.random.number({ max: max, min: min, precision: Math.pow(10, -dec) });
 
-      return symbol + (Math.round(randValue * Math.pow(10, dec)) / Math.pow(10, dec)).toFixed(dec);
+      return symbol + randValue.toFixed(dec);
 
   }
 
@@ -2010,7 +2008,6 @@ module["exports"] = [
   "Colombia",
   "Comoros",
   "Congo",
-  "Congo",
   "Cook Islands",
   "Costa Rica",
   "Cote d'Ivoire",
@@ -2506,7 +2503,7 @@ module["exports"] = [
 
 },{}],22:[function(require,module,exports){
 module.exports=require(21)
-},{"/Users/a/dev/faker.js/lib/locales/en/address/postcode.js":21}],23:[function(require,module,exports){
+},{"/data/workspace/faker.js/lib/locales/en/address/postcode.js":21}],23:[function(require,module,exports){
 module["exports"] = [
   "Apt. ###",
   "Suite ###"
@@ -10868,7 +10865,7 @@ module["exports"] = {
     "Supervisor",
     "Associate",
     "Executive",
-    "Liason",
+    "Liaison",
     "Officer",
     "Manager",
     "Engineer",
@@ -18520,7 +18517,7 @@ module["exports"] = [
 
 },{}],115:[function(require,module,exports){
 arguments[4][39][0].apply(exports,arguments)
-},{"./formats":114,"/Users/a/dev/faker.js/lib/locales/en/cell_phone/index.js":39}],116:[function(require,module,exports){
+},{"./formats":114,"/data/workspace/faker.js/lib/locales/en/cell_phone/index.js":39}],116:[function(require,module,exports){
 var company = {};
 module['exports'] = company;
 company.prefix = require("./prefix");
@@ -19394,7 +19391,7 @@ module["exports"] = [
 
 },{}],131:[function(require,module,exports){
 arguments[4][94][0].apply(exports,arguments)
-},{"./formats":130,"/Users/a/dev/faker.js/lib/locales/en/phone_number/index.js":94}],132:[function(require,module,exports){
+},{"./formats":130,"/data/workspace/faker.js/lib/locales/en/phone_number/index.js":94}],132:[function(require,module,exports){
 
 /**
  *
@@ -19480,7 +19477,7 @@ var Lorem = function (faker) {
    *
    * @method faker.lorem.paragraphs
    * @param {number} paragraphCount defaults to 3
-   * @param {string} separatora defaults to `'\n \r'`
+   * @param {string} separator defaults to `'\n \r'`
    */
   self.paragraphs = function (paragraphCount, separator) {
     if (typeof separator === "undefined") {
@@ -19943,10 +19940,20 @@ function Random (faker, seed) {
    * alphaNumeric
    *
    * @method faker.random.alphaNumeric
+   * @param {number} count defaults to 1
    */
-  this.alphaNumeric = function alphaNumeric() {
-    return faker.random.arrayElement(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
-  }
+  this.alphaNumeric = function alphaNumeric(count) {
+    if (typeof count === "undefined") {
+      count = 1;
+    }
+
+    var wholeString = "";
+    for(var i = 0; i < count; i++) {
+      wholeString += faker.random.arrayElement(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
+    }
+
+    return wholeString;
+  };
 
   return this;
 

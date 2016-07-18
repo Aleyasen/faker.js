@@ -228,6 +228,7 @@ Setting a new locale is simple:
 faker.locale = "de";
 ```
 
+ * cz
  * de
  * de_AT
  * de_CH

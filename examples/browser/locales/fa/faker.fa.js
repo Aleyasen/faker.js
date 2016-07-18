@@ -247,10 +247,8 @@ var Commerce = function (faker) {
    * department
    *
    * @method faker.commerce.department
-   * @param {number} max
-   * @param {number} fixedAmount
    */
-  self.department = function(max, fixedAmount) {
+  self.department = function() {
       return faker.random.arrayElement(faker.definitions.commerce.department);
   };
 
@@ -806,9 +804,9 @@ var Finance = function (faker) {
       max = max || 1000;
       dec = dec || 2;
       symbol = symbol || '';
-      var randValue = faker.random.number({ max: max, min: min });
+      var randValue = faker.random.number({ max: max, min: min, precision: Math.pow(10, -dec) });
 
-      return symbol + (Math.round(randValue * Math.pow(10, dec)) / Math.pow(10, dec)).toFixed(dec);
+      return symbol + randValue.toFixed(dec);
 
   }
 
@@ -1558,7 +1556,7 @@ Faker.prototype.seed = function(value) {
 }
 module['exports'] = Faker;
 
-},{"./address":1,"./commerce":2,"./company":3,"./date":4,"./fake":5,"./finance":6,"./hacker":7,"./helpers":8,"./image":9,"./internet":11,"./lorem":105,"./name":106,"./phone_number":107,"./random":108,"./system":109}],11:[function(require,module,exports){
+},{"./address":1,"./commerce":2,"./company":3,"./date":4,"./fake":5,"./finance":6,"./hacker":7,"./helpers":8,"./image":9,"./internet":11,"./lorem":119,"./name":120,"./phone_number":121,"./random":122,"./system":123}],11:[function(require,module,exports){
 var password_generator = require('../vendor/password-generator.js'),
     random_ua = require('../vendor/user-agent');
 
@@ -1910,7 +1908,7 @@ var Internet = function (faker) {
 
 module["exports"] = Internet;
 
-},{"../vendor/password-generator.js":112,"../vendor/user-agent":113}],12:[function(require,module,exports){
+},{"../vendor/password-generator.js":126,"../vendor/user-agent":127}],12:[function(require,module,exports){
 module["exports"] = [
   "#####",
   "####",
@@ -2009,7 +2007,6 @@ module["exports"] = [
   "Cocos (Keeling) Islands",
   "Colombia",
   "Comoros",
-  "Congo",
   "Congo",
   "Cook Islands",
   "Costa Rica",
@@ -2506,7 +2503,7 @@ module["exports"] = [
 
 },{}],22:[function(require,module,exports){
 module.exports=require(21)
-},{"/Users/a/dev/faker.js/lib/locales/en/address/postcode.js":21}],23:[function(require,module,exports){
+},{"/data/workspace/faker.js/lib/locales/en/address/postcode.js":21}],23:[function(require,module,exports){
 module["exports"] = [
   "Apt. ###",
   "Suite ###"
@@ -10868,7 +10865,7 @@ module["exports"] = {
     "Supervisor",
     "Associate",
     "Executive",
-    "Liason",
+    "Liaison",
     "Officer",
     "Manager",
     "Engineer",
@@ -17591,12 +17588,201 @@ module["exports"] = [
 ];
 
 },{}],100:[function(require,module,exports){
+module["exports"] = [
+  "##",
+  "#"
+];
+
+},{}],101:[function(require,module,exports){
+module["exports"] = [
+  "#{city_name}"
+];
+
+},{}],102:[function(require,module,exports){
+module["exports"] = [
+    "تهران",
+    "مشهد",
+    "اصفهان",
+    "کرج",
+    "تبریز",
+    "شیراز",
+    "اهواز",
+    "قم",
+    "کرمانشاه",
+    "ارومیه",
+    "رشت",
+    "زاهدان",
+    "کرمان",
+    "اراک",
+    "همدان",
+    "یزد",
+    "اردبیل",
+    "بندرعباس",
+    "اسلام‌شهر",
+    "زنجان",
+    "قزوین",
+    "سنندج",
+    "خرم‌آباد",
+    "گرگان",
+    "ساری",
+    "ملارد",
+    "قدس",
+    "کاشان",
+    "گلستان",
+    "شهریار",
+    "دزفول",
+    "خمینی‌شهر",
+    "بروجرد",
+    "نیشابور",
+    "سبزوار",
+    "نجف‌آباد",
+    "آمل",
+    "بابل",
+    "ورامین",
+    "آبادان",
+    "پاکدشت",
+    "خوی",
+    "ساوه",
+    "بجنورد",
+    "قائم‌شهر",
+    "بوشهر",
+    "قرچک",
+    "سیرجان",
+    "بیرجند",
+    "ایلام"
+];
+
+},{}],103:[function(require,module,exports){
+module["exports"] = [
+  ""
+];
+
+},{}],104:[function(require,module,exports){
+module.exports=require(103)
+},{"/data/workspace/faker.js/lib/locales/fa/address/city_prefix.js":103}],105:[function(require,module,exports){
+module["exports"] = [
+  "�����"
+];
+
+},{}],106:[function(require,module,exports){
+var address = {};
+module['exports'] = address;
+address.building_number = require("./building_number");
+address.street_prefix = require("./street_prefix");
+address.secondary_address = require("./secondary_address");
+address.postcode = require("./postcode");
+address.state = require("./state");
+address.city_name = require("./city_name");
+address.city = require("./city");
+address.street_suffix = require("./street_suffix");
+address.street_name = require("./street_name");
+address.street_address = require("./street_address");
+address.default_country = require("./default_country");
+address.city_prefix = require("./city_prefix");
+address.city_suffix = require("./city_suffix");
+
+},{"./building_number":100,"./city":101,"./city_name":102,"./city_prefix":103,"./city_suffix":104,"./default_country":105,"./postcode":107,"./secondary_address":108,"./state":109,"./street_address":110,"./street_name":111,"./street_prefix":112,"./street_suffix":113}],107:[function(require,module,exports){
+module["exports"] = [
+  "#####-#####"
+];
+
+},{}],108:[function(require,module,exports){
+module["exports"] = [
+  "واحد #",
+  "# طبقه"
+];
+
+},{}],109:[function(require,module,exports){
+module["exports"] = [
+"آذربایجان شرقی",
+"آذربایجان غربی",
+"اردبیل",
+"اصفهان",
+"البرز",
+"ایلام",
+"بوشهر",
+"تهران",
+"چهارمحال و بختیاری",
+"خراسان جنوبی",
+"خراسان رضوی",
+"خراسان شمالی",
+"خوزستان",
+"زنجان",
+"سمنان",
+"سیستان و بلوچستان",
+"فارس",
+"قزوین",
+"قم",
+"کردستان",
+"کرمان",
+"کرمانشاه",
+"کهگیلویه و بویراحمد",
+"گلستان",
+"گیلان",
+"لرستان",
+"مازندران",
+"مرکزی",
+"هرمزگان",
+"همدان",
+"یزد"
+];
+
+},{}],110:[function(require,module,exports){
+module["exports"] = [
+  "#{street_name}, پلاک #{building_number}",
+  "#{street_name}, #{street_name}, پلاک #{building_number}"
+];
+
+},{}],111:[function(require,module,exports){
+module["exports"] = [
+  "#{street_prefix} #{street_suffix}"
+];
+
+},{}],112:[function(require,module,exports){
+module["exports"] = [
+  "خیابان",
+  "کوچه",
+  "بن بست",
+  "بلوار"
+];
+
+},{}],113:[function(require,module,exports){
+module["exports"] = [
+"آزادی",
+"آفریقا",
+"آذربایجان",
+"حقانی",
+"امیرکبیر",
+"اجاره دار",
+"اقبال لاهوری",
+"ابوذر",
+"قدس",
+"سباری",
+"فاطمی",
+"مالک اشتر",
+"راستوان",
+"دیباجی",
+"واعظی",
+"دستغیب",
+"موحد دانش",
+"کارگر شمالی",
+"استاد قریب",
+"یادگار امام",
+"دکتر چمران",
+"رسالت",
+"سمیه",
+"شهید مطهری",
+"هویزه",
+"دماوند",
+];
+},{}],114:[function(require,module,exports){
 var fa = {};
 module['exports'] = fa;
 fa.title = "Farsi";
 fa.name = require("./name");
+fa.address = require("./address");
 
-},{"./name":102}],101:[function(require,module,exports){
+},{"./address":106,"./name":116}],115:[function(require,module,exports){
 module["exports"] = [
   "آبان دخت",
   "آبتین",
@@ -18322,14 +18508,14 @@ module["exports"] = [
   "یوشیتا"
 ];
 
-},{}],102:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 var name = {};
 module['exports'] = name;
 name.first_name = require("./first_name");
 name.last_name = require("./last_name");
 name.prefix = require("./prefix");
 
-},{"./first_name":101,"./last_name":103,"./prefix":104}],103:[function(require,module,exports){
+},{"./first_name":115,"./last_name":117,"./prefix":118}],117:[function(require,module,exports){
 module["exports"] = [
   "عارف",
   "عاشوری",
@@ -18477,14 +18663,14 @@ module["exports"] = [
   "یلدا"
 ];
 
-},{}],104:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module["exports"] = [
   "آقای",
   "خانم",
   "دکتر"
 ];
 
-},{}],105:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 
 /**
  *
@@ -18570,7 +18756,7 @@ var Lorem = function (faker) {
    *
    * @method faker.lorem.paragraphs
    * @param {number} paragraphCount defaults to 3
-   * @param {string} separatora defaults to `'\n \r'`
+   * @param {string} separator defaults to `'\n \r'`
    */
   self.paragraphs = function (paragraphCount, separator) {
     if (typeof separator === "undefined") {
@@ -18613,7 +18799,7 @@ var Lorem = function (faker) {
 
 module["exports"] = Lorem;
 
-},{}],106:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 /**
  *
  * @namespace faker.name
@@ -18792,7 +18978,7 @@ function Name (faker) {
 
 module['exports'] = Name;
 
-},{}],107:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 /**
  *
  * @namespace faker.phone
@@ -18837,7 +19023,7 @@ var Phone = function (faker) {
 };
 
 module['exports'] = Phone;
-},{}],108:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 var mersenne = require('../vendor/mersenne');
 
 /**
@@ -19033,10 +19219,20 @@ function Random (faker, seed) {
    * alphaNumeric
    *
    * @method faker.random.alphaNumeric
+   * @param {number} count defaults to 1
    */
-  this.alphaNumeric = function alphaNumeric() {
-    return faker.random.arrayElement(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
-  }
+  this.alphaNumeric = function alphaNumeric(count) {
+    if (typeof count === "undefined") {
+      count = 1;
+    }
+
+    var wholeString = "";
+    for(var i = 0; i < count; i++) {
+      wholeString += faker.random.arrayElement(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]);
+    }
+
+    return wholeString;
+  };
 
   return this;
 
@@ -19044,7 +19240,7 @@ function Random (faker, seed) {
 
 module['exports'] = Random;
 
-},{"../vendor/mersenne":111}],109:[function(require,module,exports){
+},{"../vendor/mersenne":125}],123:[function(require,module,exports){
 // generates fake data for many computer systems properties
 
 /**
@@ -19203,14 +19399,14 @@ function System (faker) {
 }
 
 module['exports'] = System;
-},{}],110:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 var Faker = require('../lib');
 var faker = new Faker({ locale: 'fa', localeFallback: 'en' });
 faker.locales['fa'] = require('../lib/locales/fa');
 faker.locales['en'] = require('../lib/locales/en');
 module['exports'] = faker;
 
-},{"../lib":10,"../lib/locales/en":77,"../lib/locales/fa":100}],111:[function(require,module,exports){
+},{"../lib":10,"../lib/locales/en":77,"../lib/locales/fa":114}],125:[function(require,module,exports){
 // this program is a JavaScript version of Mersenne Twister, with concealment and encapsulation in class,
 // an almost straight conversion from the original program, mt19937ar.c,
 // translated by y. okada on July 17, 2006.
@@ -19498,7 +19694,7 @@ exports.seed_array = function(A) {
     gen.init_by_array(A);
 }
 
-},{}],112:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 /*
  * password-generator
  * Copyright(c) 2011-2013 Bermi Ferrer <bermi@bermilabs.com>
@@ -19564,7 +19760,7 @@ exports.seed_array = function(A) {
 
   // Establish the root object, `window` in the browser, or `global` on the server.
 }(this));
-},{}],113:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 /*
 
 Copyright (c) 2012-2014 Jeffrey Mealo
@@ -19775,5 +19971,5 @@ exports.generate = function generate() {
     return browser[random[0]](random[1]);
 };
 
-},{}]},{},[110])(110)
+},{}]},{},[124])(124)
 });

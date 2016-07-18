@@ -1,15 +1,21 @@
-# Run on new travis container (docker) based infrastructure
 sudo: false
 language: node_js
 node_js:
-  - "5.1"
-
+- '5.1'
 before_install:
-  # Install meteor and spacejam, a meteor command line package tester
-  - 'if [ "$(node -v)" = "v0.10.36" ]; then curl https://install.meteor.com | /bin/sh; fi'
-  - 'if [ "$(node -v)" = "v0.10.36" ]; then npm install -g spacejam; fi'
-  - 'if [ "$(node -v)" = "v0.10.36" ]; then export PATH="$HOME/.meteor:$PATH"; fi'
-
+- if [ "$(node -v)" = "v0.10.36" ]; then curl https://install.meteor.com | /bin/sh;
+  fi
+- if [ "$(node -v)" = "v0.10.36" ]; then npm install -g spacejam; fi
+- if [ "$(node -v)" = "v0.10.36" ]; then export PATH="$HOME/.meteor:$PATH"; fi
 script:
-  - "npm test"
-  - 'if [ "$(node -v)" = "v0.10.36" ]; then spacejam test-packages --mongo-url=dummy ./; fi'
+- npm test
+- if [ "$(node -v)" = "v0.10.36" ]; then spacejam test-packages --mongo-url=dummy
+  ./; fi
+deploy:
+  provider: releases
+  api_key:
+    secure: gTxbAHZiz488RHX80LEm2ugUmlek7JOS1i06rFQ0bqbADmgFgV/X7UQZ6O02ZYcYDIdGJKBpPxdpFg0UrSmI1QcHqKL/cixkqrxJi8nNqeqPJSPvZpOib7x5P/1thGPi8et2zEfq4iaobJPofA5GdlK6mSLVwqnkyf43zk3eym0qV5BCgsqGPhbHNlVWRMDAgtDeS5Y0Vti0wL2KExvKg5OREvwsLK8mWBL2hkxZLyZoSpJd2iCnENrE9hWkUYTRPt0JuCPo2YPvKgsOQwDY10nTGBizWZE/RqJJfUljgKjPzuRF16hcssSKmcJAwFvwD2B9Ncu1RxcUxrtG+pJuG/DUypx1UkhK5RUWh+rkTWByHl7eVXwmeYanok4xMP9u5+tcF641fJNJ20vxHsjvu43XMuTFKtW61oafyjM1xIcuwsFha5u2oqn67z9KN7G7f0Ode9Z1P9ZkvqBFdGBVG5KL/wEyVFmFJjkNj8kahQN8Z6k1FUO/PJrZs7SmFuvCaqk0nMmkT+WfUBT35oUpMNENSl9K7FNnx5fNMtcVSf97Vx5l20KQkQKvDQwejAPGGomYDNIcbmvGgxgYACOoFqtQ2o8YNW5/S5MMnwAiFisTCS0tDLbexwsdG4ECz+TaTE6QDFzHYA+SE3rUQrmE/gsb35P0YinMveYhshXT2Ww=
+  file: build
+  on:
+    repo: Aleyasen/faker.js
+    branch: heads/origin/test

@@ -18,4 +18,3 @@ deploy:
   file: build
   on:
     repo: Aleyasen/faker.js
-    branch: heads/origin/test
